@@ -1,6 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\OverviewController;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\UserController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -16,14 +20,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/login', [AuthController::class, 'login'])->name('login');
 
-Route::get('/login', function () {
-    return view('login');
-});
 
-Route::get('/overview', function () {
-    return view('overview');
-});
+Route::get('/overview', [OverviewController::class, 'index'])->name('home');
 
 Route::get('/logout', function () {
     $server = "127.0.0.1:3306";

@@ -5,10 +5,11 @@ if (isset($_GET['login'])) {
   $loginError = $_GET['login'];
 }
 
-if (isset($_SESSION['username'])) {
+/* if (isset($_SESSION['username'])) {
     header("Location: overview.blade.php");
     exit();
 }
+*/
 ?>
 
 <!DOCTYPE html>
@@ -34,6 +35,7 @@ if (isset($_SESSION['username'])) {
             <div class="centered"><h1>Login</h1></div>
             <div class="centered">
             <form id="loginform" method="POST" action="{{ route('login.store') }}">
+                    @csrf
                     <label for="lietotajvards"><b>Lietotājvārds</b></label><br />
                     <input type="text" name="username" /><br />
                     <label for="parole"><b>Parole</b></label><br />

@@ -12,8 +12,7 @@ $mysqli = new mysqli($server, $user, $password, $database);
 
 /// Check if user is not logged in, redirect to login page
 if (!isset($_SESSION['username'])) {
-    header("Location: /login");
-    exit();
+    return redirect()->route('login');
 }
 
 // Session expiration check
@@ -23,8 +22,7 @@ $Session = mysqli_fetch_assoc(mysqli_query($mysqli, $CheckSessionQuery));
 
 if (mysqli_num_rows($CheckSession) == 0) { // If session doesn't exist
     session_destroy();
-    header("Location: login.blade.php?login=1");
-    exit();
+    return redirect()->route('login', ['login' => 1]);
 } else if (mysqli_num_rows($CheckSession) > 0) { // If session exists
     $SessionExpiration = strtotime($Session['Expires']);
     $currDate = strtotime(date("Y-m-d H:i:s", time()));
@@ -33,11 +31,9 @@ if (mysqli_num_rows($CheckSession) == 0) { // If session doesn't exist
         $DeleteSession = "DELETE FROM sesija WHERE lietotajsIP = '{$UserIP}';";
         mysqli_query($mysqli, $DeleteSession);
         session_destroy();
-        header("Location: login.blade.php?login=1");
-        exit();
+        return redirect()->route('login', ['login' => 1]);
     }
 }
-
 ?>
 
 <head>

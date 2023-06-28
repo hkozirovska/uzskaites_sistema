@@ -10,7 +10,7 @@ $user = "root";
 $password = "";
 $mysqli = new mysqli($server, $user, $password, $database);
 
-// Check if user is not logged in, redirect to login page
+/// Check if user is not logged in, redirect to login page
 if (!isset($_SESSION['username'])) {
     header("Location: /login");
     exit();

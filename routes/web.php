@@ -20,8 +20,8 @@ use App\Http\Controllers\UserController;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/login', [AuthController::class, 'login'])->name('login');
 
+Route::post('/login', [AuthController::class, 'showLoginForm'])->name('login');
 
 Route::get('/overview', [OverviewController::class, 'index'])->name('home');
 

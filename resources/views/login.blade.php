@@ -33,7 +33,7 @@ if (isset($_SESSION['username'])) {
           <div class="inner">
             <div class="centered"><h1>Login</h1></div>
             <div class="centered">
-            <form id="loginform" method="post" action="{{ route('login') }}">
+            <form id="loginform" method="POST" action="{{ route('login.store') }}">
                     <label for="lietotajvards"><b>Lietotājvārds</b></label><br />
                     <input type="text" name="username" /><br />
                     <label for="parole"><b>Parole</b></label><br />
